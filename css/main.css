@@ -101,6 +101,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 3em;
     cursor: pointer;
     border: 2px dashed #ccc;
+    text-align: center;
 }
 
 .news-feed {
@@ -124,7 +125,7 @@ h1, h2, h3, h4, h5, h6 {
     width: calc(100% - 1em);
 }
 
-.news-feed_article:hover, #countryInput div:hover {
+.news-feed_article:hover, #countryInputsss div:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
 }
 .news-feed_article > * + * {
@@ -156,12 +157,13 @@ h1, h2, h3, h4, h5, h6 {
     color: #4CAF50;
     font-family: FontAwesome;
 }
-#countryInput {
+#countryInputs {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-#countryInput div {
+#countryInputs div {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -172,8 +174,14 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     width: calc(30% - 1em);
-    font-size: 0.5em;
+    font-size: 1em;
+    text-align: center;
     cursor: pointer;
+}
+#countryInputs .checked:before {
+    font-size: 1em;
+    right: 0px;
+    left: auto !important;
 }
 @media(min-width: 30rem) {
     .news-feed_article {
@@ -206,7 +214,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 @media(max-width: 30rem) {
-    .news-categories .news-category, .news-sorts .news-sort, .news-sources .news-source {
+    .news-categories .news-category, .news-sorts .news-sort, .news-sources .news-source, #countryInputs {
         font-size: 0.8em;
     }
 }
