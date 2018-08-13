@@ -72,7 +72,13 @@ _newsFunctions.createArticles = (articles) => {
         headingEl.textContent = article.title;
     
         var imgEl = document.createElement('img');
-        imgEl.setAttribute('src', article.urlToImage);
+        var imageUrl = '';
+        if(!article.urlToImage) {
+            imageUrl = 'images/missing-image.png';
+        } else {
+            imageUrl = article.urlToImage;
+        }
+        imgEl.setAttribute('src', imageUrl);
         imgEl.classList.add('news-feed_article-img');
     
         var descParaEl = document.createElement('p');

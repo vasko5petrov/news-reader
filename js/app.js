@@ -19,12 +19,12 @@ var categories = [
 ];
 
 var newsCategoriesEl = document.querySelector('.news-categories');
-var countryInputEl = document.querySelector('#countryInput');
+var countryInputsEl = document.querySelector('#countryInputs');
 
 import {_newsFunctions} from './functions.js';
 
 _newsFunctions.createNavElementsFromArray(categories, 'news-category', newsCategoriesEl);
-_newsFunctions.createNavElementsFromArray(countries, 'country', countryInputEl);
+_newsFunctions.createNavElementsFromArray(countries, 'country', countryInputsEl);
 
 function createEventListeners(type, typeOfEvent, elements) {
   if(type === 'sources') {
@@ -50,18 +50,40 @@ function createEventListeners(type, typeOfEvent, elements) {
 			
 			checkedTab(e.target);
 
-			let category = e.target.textContent;
-			_newsFunctions.getSources(defaultLanguage, category).then(data => {
+			defaultCategory = e.target.textContent;
+			_newsFunctions.getSources(defaultLanguage, defaultCategory).then(data => {
 				_newsFunctions.clearElements('.news-sources');
 				_newsFunctions.createSources(data.sources);
 			});
-			_newsFunctions.getArticles(defaultCountry, category).then(data => {
+			_newsFunctions.getArticles(defaultCountry, defaultCategory).then(data => {
 				_newsFunctions.clearElements('.news-feed');
 				_newsFunctions.createArticles(data.articles);
 			});
 		});
     });
-  } 
+  } else {
+		elements.forEach(el => {
+			el.addEventListener(typeOfEvent, function(e) {
+				
+				checkedTab(e.target);
+
+				defaultCountry = e.target.id;
+				defaultLanguage = 'en';
+				if(defaultCountry === 'bg') {
+					defaultLanguage = 'bg';
+				}
+
+				_newsFunctions.getSources(defaultLanguage, defaultCategory).then(data => {
+					_newsFunctions.clearElements('.news-sources');
+					_newsFunctions.createSources(data.sources);
+				});
+				_newsFunctions.getArticles(defaultCountry, defaultCategory).then(data => {
+					_newsFunctions.clearElements('.news-feed');
+					_newsFunctions.createArticles(data.articles);
+				});
+			});
+		});
+	}
 }
 
 function checkedTab(element) {
@@ -74,7 +96,9 @@ function checkedTab(element) {
 function preload() {
 
 	var defaultCategoryTab = document.querySelector('.' + defaultCategory);
+	var defaultCountryTab = document.querySelector('#' + defaultCountry);
 	checkedTab(defaultCategoryTab);
+	checkedTab(defaultCountryTab);
 	
 	_newsFunctions.getSources(defaultLanguage, defaultCategory).then(data => {
 		_newsFunctions.clearElements('.news-sources');
@@ -88,6 +112,7 @@ function preload() {
 	
 	createEventListeners('categories', 'click', document.querySelectorAll('.news-category'));
 	createEventListeners('sources', 'click', document.querySelectorAll('.news-sources'));
+	createEventListeners('countries', 'click', document.querySelectorAll('.country'));
 
 }
 
