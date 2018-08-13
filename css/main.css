@@ -1,0 +1,212 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500';
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.35;
+    font-weight: 300;
+    font-family: "Roboto", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, p {
+    color: #424242;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #212121;
+    text-align: center;
+}
+.business {
+    background: #ff5252;
+}
+.entertainment {
+    background: #34ace0;
+}
+.health {
+    background: #33d9b2;
+}
+.general {
+    background: #ffb142;
+}
+.music {
+    background: #b33939;
+}
+.science {
+    background: #227093;
+}
+.technology {
+    background: #218c74;
+}
+.sports {
+    background: #cc8e35;
+}
+
+.news-categories {
+    display: flex;
+    flex-wrap: wrap;
+}
+.news-categories .news-category {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    border: 1px solid white;
+    text-shadow: 1px 1px rgba(0,0,0,0.33);
+    color: white;
+    width: 25%;
+    height: 3em;
+    cursor: pointer;
+}
+
+.news-sorts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.news-sorts .news-sort {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    text-shadow: 1px 1px rgba(0,0,0,0.33);
+    color: black;
+    width: 15%;
+    height: 3em;
+    cursor: pointer;
+    border: 2px dashed #333;
+    border-right: none;
+}
+.news-sorts .news-sort:last-child {
+    border-right: 2px dashed #333;
+}
+
+.news-sources {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-height: 200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.news-sources .news-source {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    text-shadow: 1px 1px rgba(0,0,0,0.33);
+    color: black;
+    width: 15%;
+    height: 3em;
+    cursor: pointer;
+    border: 2px dashed #ccc;
+}
+
+.news-feed {
+    padding: 0.33em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.news-feed_article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+    text-decoration: none;
+    border-radius: 2px;
+    padding: 0.66em;
+    margin: 0.5em;
+    max-width: 60ch;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    width: calc(100% - 1em);
+}
+
+.news-feed_article:hover, #countryInput div:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
+}
+.news-feed_article > * + * {
+    margin: 0.66em auto 0 auto;
+}
+.news-feed_article-title {
+    text-align: center;
+}
+.news-feed_article-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.news-feed_article-description {
+    max-width: 60ch;
+}
+.news-feed_article-author {
+    color: #616161;
+}
+
+.checked:before {
+    content: "\f00c";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 2.5em;
+    text-shadow: 1px 1px rgba(0,0,0,0.66);
+    color: #4CAF50;
+    font-family: FontAwesome;
+}
+#countryInput {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#countryInput div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+    text-decoration: none;
+    border-radius: 2px;
+    margin: 0.5em;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    width: calc(30% - 1em);
+    font-size: 0.5em;
+    cursor: pointer;
+}
+@media(min-width: 30rem) {
+    .news-feed_article {
+        width: calc(50% - 1em);
+    }
+}
+@media(min-width: 48rem) {
+    .news-feed_article {
+        width: calc(33% - 1em);
+    }
+}
+@media(min-width: 68.75rem) {
+    .news-feed_article {
+        width: calc(25% - 1em);
+    }
+}
+@media(max-width: 48rem) {
+    .news-sorts .news-sort {
+        width: 33%;
+    }
+    .news-sources {
+        flex-direction: column;
+        margin: 1px 0px;
+        overflow-y: hidden;
+        overflow-x: scroll;
+        height: 3em;
+    }
+    .news-sources .news-source {
+        width: 50%;
+    }
+}
+@media(max-width: 30rem) {
+    .news-categories .news-category, .news-sorts .news-sort, .news-sources .news-source {
+        font-size: 0.8em;
+    }
+}
