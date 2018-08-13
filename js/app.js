@@ -1,6 +1,6 @@
 var defaultCategory = 'sports';
-var defaultCountry = 'bg';
-var defaultLanguage = 'bg';
+var defaultCountry = 'gb';
+var defaultLanguage = 'en';
 var languages = ['bg', 'en'];
 var countries = [
 	{id: 'bg', name: 'Bulgaria'},
@@ -21,7 +21,7 @@ var categories = [
 var newsCategoriesEl = document.querySelector('.news-categories');
 var countryInputEl = document.querySelector('#countryInput');
 
-import {_newsFunctions} from './functions';
+import {_newsFunctions} from './functions.js';
 
 _newsFunctions.createNavElementsFromArray(categories, 'news-category', newsCategoriesEl);
 _newsFunctions.createNavElementsFromArray(countries, 'country', countryInputEl);
