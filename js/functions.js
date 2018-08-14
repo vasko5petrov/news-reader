@@ -71,15 +71,16 @@ _newsFunctions.createArticles = (articles) => {
         headingEl.classList.add('news-feed_article-title');
         headingEl.textContent = article.title;
     
-        var imgEl = document.createElement('img');
+        var imgEl = document.createElement('div');
         var imageUrl = '';
         if(!article.urlToImage) {
             imageUrl = 'images/missing-image.png';
         } else {
             imageUrl = article.urlToImage;
         }
-        imgEl.setAttribute('src', imageUrl);
-        imgEl.classList.add('news-feed_article-img');
+
+        imgEl.style = `background-image: url(${imageUrl})`; 
+        imgEl.classList.add('news-feed_article-img-bg');
     
         var descParaEl = document.createElement('p');
         descParaEl.classList.add('news-feed_article-description');

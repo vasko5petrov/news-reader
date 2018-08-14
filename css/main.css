@@ -139,6 +139,12 @@ h1, h2, h3, h4, h5, h6 {
     height: auto;
     display: block;
 }
+.news-feed_article-img-bg {
+    width: 100%; 
+    height: 170px;
+    background-position: center;
+    background-size: cover;
+}
 .news-feed_article-description {
     max-width: 60ch;
 }
