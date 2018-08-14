@@ -91,7 +91,14 @@ _newsFunctions.createArticles = (articles) => {
     
         var smallDateEl = document.createElement('small');
         smallDateEl.classList.add('news-feed_article-author');
-        smallDateEl.textContent = article.publishedAt;
+        let articlePublishedAt = new Date(article.publishedAt).toLocaleString(undefined, {
+            day: 'numeric',
+            month: 'numeric',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        smallDateEl.textContent = articlePublishedAt;
     
         var testEl = document.createElement('div');
         testEl.style = "text-align: center";
